@@ -1,19 +1,37 @@
 // SteamAPI FaQ: https://developer.valvesoftware.com/wiki/Steam_Web_API
 
+    // söker på qubuxz med min key
+    // http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=4CFB0E68E2168BE259F51B41ED5791AD&steamids=76561198089603744
 
 // Variable declarations
 let submitButton = document.getElementById("btn");
-let inputText = document.getElementById("SteamID");
+let inputText = document.getElementById("steamID");
+let userID = 0;
 
- 
 // Named functions
+function validID(){
+    if(!isNaN(inputText) && length(inputText) === 17){
+        validID = true;
+    }
+    else{
+        validID = false;
+    }
+}
 
 function GetPlayerSummaries(){
-    // Profilnamn och bild ska hämtas här
+    let request = new XMLHttpRequest();
+   if(!validID){
+        // Hitta 16 siffrigt steam id med:
+        // http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=4CFB0E68E2168BE259F51B41ED5791AD&vanityurl=inputText
+        
+        // om "No match, skicka fel
+        // om "success" -> userID = vad det nu är för svar.
+   }
+        else{
+        // userID = 17IdValue
+        request.open('GET', 'Här ska det stå api-req för GetPlayerSummaries', true)
+    }
 
-    var request = new XMLHttpRequest()
-
-    request.open('GET', 'https://ghibliapi.herokuapp.com/films', true)
 
     request.onload = function() {
     // Begin accessing JSON data here
@@ -22,6 +40,13 @@ function GetPlayerSummaries(){
 // Send request
 request.send()
 }
+
+
+
+
+
+
+
 
 function getUserStatsForGame(){
     // Skaffar data per spel och user
@@ -38,6 +63,7 @@ function GetRecentlyPlayedGames (){
 function GetPlayerBans(){
     //hämtar data om bans
 }
+
 
 function hideElement(element){
 element.style.display = "none";
