@@ -5,11 +5,20 @@
 
 // Variable declarations
 let submitButton = document.getElementById("btn");
-let inputText = document.getElementById("steamID");
+// let inputText = document.getElementById("steamID");
+let inputText = "qubuxz";
 let steamID = "";
 let APIKey = "4CFB0E68E2168BE259F51B41ED5791AD";
 
-
+// 0: GetPlayerSummaries, 1:GetRecentlyPlayedGames, 2: GetFriendList, 3: getUserStatsForGame, 4: GetPlayerBans.
+let callURLs = [
+    "http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=" + APIKey + "&vanityurl=" + inputText,
+    "http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=" + APIKey + "&steamid=" + steamID + "&format=json",
+    "http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=" + APIKey + "&steamid=" + steamID + "&relationship=friend",
+    "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=440&key=" + APIKey + "&steamid=" + steamID,
+    //Can search for multiple players bans. Separate ids with comma: "steamids="XXXXX", "YYYYY", "ZZZZZ"
+    "http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=" + APIKey + "&steamids=" + steamID 
+]
 
 // Named functions
 function getLength(inputText){
@@ -31,16 +40,29 @@ function isValidID(inputText){
     return validID;
 }
 
+let data;
 
-// 1: GetPlayerSummaries, 2:GetRecentlyPlayedGames, 3: GetFriendList, 4: getUserStatsForGame, 5: GetPlayerBans.
-let callURLs = [
-    "http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=" + APIKey + "&vanityurl=inputText",
-    "http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=" + APIKey + "&steamid=" + steamID + "&format=json",
-    "http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=" + APIKey + "&steamid=" + steamID + "&relationship=friend",
-    "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=440&key=" + APIKey + "&steamid=" + steamID,
-    //Can search for multiple players bans. Separate ids with comma: "steamids="XXXXX", "YYYYY", "ZZZZZ"
-    "http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=" + APIKey + "&steamids=" + steamID 
-]
+
+
+function testCall(){
+    // if(!isValidID) {
+    //     let ourReq = new XMLHttpRequest();
+    //     ourReq.open("GET", "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=4CFB0E68E2168BE259F51B41ED5791AD&steamids=76561198089603744");
+    //     ourReq.onload = function () {
+    //     data = JSON.parse(ourReq.responseText);
+    //     console.log(data[0]);  
+    // };
+    // ourReq.send();
+
+
+    fetch("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=4CFB0E68E2168BE259F51B41ED5791AD&steamids=76561198089603744", {
+        mode: 'no-cors' // 'cors' by default
+      })
+      .then(function(response) {
+        console.log(response.steamID);
+      });
+}
+
 
 
 
@@ -106,9 +128,9 @@ element.style.display = "block";
 // Annonumus funkctions
 
 
-submitButton.onclick = function(){
-    submitButton.style.display = "none";
-};   
+// submitButton.onclick = function(){
+//     submitButton.style.display = "none";
+// };   
 
 
 
