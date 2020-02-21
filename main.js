@@ -8,14 +8,26 @@ let submitButton = document.getElementById("btn");
 let inputText = document.getElementById("steamID");
 let userID = 0;
 
+
+function getLength(inputText){
+    if(!inputText.isNaN){
+        return inputText.toString().length;
+    }
+}
+
 // Named functions
-function validID(){
-    if(!isNaN(inputText) && length(inputText) === 17){
+function isValidID(inputText){
+    let validID = false; 
+
+
+    if(!isNaN(inputText) && getLength(inputText) === 17){
         validID = true;
     }
     else{
         validID = false;
     }
+
+    return validID;
 }
 
 function GetPlayerSummaries(){
