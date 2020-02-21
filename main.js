@@ -6,20 +6,21 @@
 // Variable declarations
 let submitButton = document.getElementById("btn");
 let inputText = document.getElementById("steamID");
-let userID = 0;
+let steamID = "";
+let APIKey = "4CFB0E68E2168BE259F51B41ED5791AD";
 
 
+
+// Named functions
 function getLength(inputText){
     if(!inputText.isNaN){
         return inputText.toString().length;
     }
 }
 
-// Named functions
 function isValidID(inputText){
     let validID = false; 
-
-
+    
     if(!isNaN(inputText) && getLength(inputText) === 17){
         validID = true;
     }
@@ -30,12 +31,29 @@ function isValidID(inputText){
     return validID;
 }
 
+
+// 1: GetPlayerSummaries, 2:GetRecentlyPlayedGames, 3: GetFriendList, 4: getUserStatsForGame, 5: GetPlayerBans.
+let callURLs = [
+    "http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=" + APIKey + "&vanityurl=inputText",
+    "http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=" + APIKey + "&steamid=" + steamID + "&format=json",
+    "http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=" + APIKey + "&steamid=" + steamID + "&relationship=friend",
+    "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=440&key=" + APIKey + "&steamid=" + steamID,
+    //Can search for multiple players bans. Separate ids with comma: "steamids="XXXXX", "YYYYY", "ZZZZZ"
+    "http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=" + APIKey + "&steamids=" + steamID 
+]
+
+
+
+
+
+
+
+
+
 function GetPlayerSummaries(){
     let request = new XMLHttpRequest();
    if(!validID){
-        // Hitta 16 siffrigt steam id med:
-        // http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=4CFB0E68E2168BE259F51B41ED5791AD&vanityurl=inputText
-        
+    
         // om "No match, skicka fel
         // om "success" -> userID = vad det nu är för svar.
    }
