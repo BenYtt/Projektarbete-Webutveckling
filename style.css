@@ -11,7 +11,7 @@ html, body {
 .container {
     font-family: "Lato", Arial, sans-serif;
     width: 100%;
-    height: auto;
+    height: 100vh auto;
     color: #fff;
     background: linear-gradient(-45deg, #EE7752, #e73C7e, #23A6D5, #23D5AB);
     background-size: 400% 400%;
@@ -21,23 +21,17 @@ html, body {
     flex-direction: column;
     align-items: center; /* align items: y-led || justify-content: x-led*/
 
+}
+
+.logo-container{
+    display: flex;
+    flex-direction: column;
 
 }
 
 
 
-#logo {
-    color: white;
-    margin: 5vh;
-    margin-top: 10vh;
-}
-
-h1{
-    margin: 5vh;
-    font-weight: 1200;
-}
-
-  #sendBtn{
+#sendBtn{
     font-family: "Lato", Arial, sans-serif;
     border:0;
     background:#e73C7e;
@@ -47,13 +41,40 @@ h1{
     width:auto;
     text-transform:uppercase;
     cursor:pointer;
+    font-weight: 900;
 }
+
+#logo {
+    color: white;
+    margin: 5vh;
+    margin-left: 12vh;
+}
+
+h1{
+    margin: 2vh;
+    font-weight: 1200;
+}
+
+.submission-form{
+    font-family: "Lato", Arial, sans-serif;
+    border:0;
+    padding:.5rem;
+    color:white;
+    margin:1rem 0;
+    margin-top: 0;
+    width:auto;
+    text-transform:uppercase;
+    cursor:pointer;
+
+}
+
 
 .profile{
     margin-top: 3rem;
     display: flex;
     justify-content: center;
     margin-bottom: 3rem;
+    margin-top: 0;
 
 }
 
@@ -206,3 +227,51 @@ border: solid;
     }
 
 }
+
+@media all and (min-width: 900px){
+    
+    #logo {
+        color: white;
+        margin: 0vh;
+        margin-top: 0;
+        margin-left: 1rem;
+    }
+
+    h1{
+        text-align: center;
+        padding-left: -2rem; 
+        margin-top: 4vh;    
+    }
+
+    .logo-container{
+        display: flex;
+        flex-direction: row;
+        width: 40%;
+        height: 20vh;
+        justify-content: unset;
+        align-items:unset;
+    }
+
+    .profile{
+        order: 5;
+        width: 30%;
+        height: 50vh;
+        margin-right: 5vw;
+    }
+
+    .submission-form {
+        order: 1;
+    }
+    .container{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 100%;
+        height: 100vh;
+    }
+    
+
+
+}
+
+
