@@ -4,6 +4,7 @@
 // let inputText = document.getElementById("steamID");
 let submitButton = document.getElementById("sendBtn").addEventListener('click', ()=> checkInputText(inputText.value));   
 
+
 // For testing without entering anything in the submitform. 
 // Line 4 must be commented out to use this!
 fakeInput();
@@ -17,6 +18,13 @@ function fakeInput(){
 inputText.onkeydown = function(e){
     if(e.keyCode === 13){
         checkInputText(inputText.value);
+    }
+}
+
+// Gets the length of the input-string.
+function getLength(inputText){
+    if(!inputText.isNaN){
+        return inputText.toString().length;
     }
 }
 
@@ -37,7 +45,6 @@ function isValidID(inputText){
     if(!isNaN(inputText) && getLength(inputText) === 17){
         validID = true;
     }
-
     else{
         validID = false;
     }
@@ -58,6 +65,7 @@ function getSteamID(inputText){
         steamID = response.data.response.steamid;
         getPersonaName(steamID);
         getAvatarFull(steamID);
+        //calculatePlaytime(steamID)
     });
 }
 
@@ -75,26 +83,44 @@ function getPersonaName(steamID){
             });
     }
 
-    // Gets the player avatar based of the steamID and passes it to setPlayerAvatar
-    function getAvatarFull(steamID){
-        let url;
-        axios.get("/getpersonaname",{
-            params:{
-                steamID
-                }
-            })
-                .then(function(response) {
-                    url = response.data.response.players[0].avatarfull;
-                setPlayerAvatar(url);
-                });
-        }
-
-// Gets the length of the input-string.
-function getLength(inputText){
-    if(!inputText.isNaN){
-        return inputText.toString().length;
+// Gets the player avatar based of the steamID and passes it to setPlayerAvatar
+function getAvatarFull(steamID){
+    let url;
+    axios.get("/getpersonaname",{
+        params:{
+            steamID
+            }
+        })
+            .then(function(response) {
+                url = response.data.response.players[0].avatarfull;
+            setPlayerAvatar(url);
+            });
     }
+
+
+function getPlaytime(steamID){
+    let gameCount = 0;
+    let totalMinutesPlayed = 0;
+
+    // En for-loop ska loopa igenom arrayen games från json-objektet
+    // for i = 0; i < gamesCount; i++
+    // totalMinutesPlayed += games[i].playtime_forever 
+
+    axios.get("/getownedgames",{
+    params:{
+        steamID
+        }
+    })
+        .then(function(response) {
+            gameCount = response.data.response.game_count;
+            setPlaytime(gameCount, totalMinutesPlayed);
+        });
 }
+
+function setPlaytime(gameCount, totalMinutesPlayed){
+    let totalHoursPLyed = round(totalMinutesPlayed / 60);
+}
+
 
 
 
