@@ -1,0 +1,23 @@
+{
+  "name": "projektarbete-webutveckling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenYtt/Projektarbete-Webutveckling.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BenYtt/Projektarbete-Webutveckling/issues"
+  },
+  "homepage": "https://github.com/BenYtt/Projektarbete-Webutveckling#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1"
+  }
+}

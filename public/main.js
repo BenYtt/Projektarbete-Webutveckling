@@ -4,19 +4,9 @@
 let submitButton = document.getElementById("btn");
 let inputText = document.getElementById("steamID");
 
-let inputText = "qubuxz";
+// let inputText = "qubuxz";
 let steamID = "76561198089603744";
 let APIKey = "4CFB0E68E2168BE259F51B41ED5791AD";
-let playerData;
-
-// 0: GetPlayerSummaries, 1: GetFriendList, 2: getUserStatsForGame, 3: GetPlayerBans.
-let callURLs = [
-    "http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=" + APIKey + "&vanityurl=" + inputText,
-    "http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=" + APIKey + "&steamid=" + steamID + "&relationship=friend",
-    "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=440&key=" + APIKey + "&steamid=" + steamID,
-    //Can search for multiple players bans. Separate ids with comma: "steamids="XXXXX", "YYYYY", "ZZZZZ"
-    "http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=" + APIKey + "&steamids=" + steamID 
-]
 
 // Gets the length of the input-string.
 function getLength(inputText){
@@ -39,15 +29,24 @@ function isValidID(inputText){
     return validID;
 }
 
-// function testCall(){
-//     let url = callurls[x];
-//     request = new XMLHttpRequest();
-//     request.open('GET', url); // lägg till 'true' som arg för  async.
-//     request.onload = function () {
-//         data = JSON.parse(request.responseText);
-//     };
-//     req.send();
-// }
+
+function getPlayerName(name){
+    document.getElementById('player-name').innerHTML = name;
+}
+
+
+getPlayerName();
+testCall();
+
+function testCall(){
+let playerName;
+    axios.get("/playerdata")
+      .then(function(response) {
+        playerName = response.data.response.players[0].personaname;
+        getPlayerName(playerName);
+      });
+}
+
 
 // Sends a request for playerdata and stores the data in playerData
 function GetPlayerSummaries(player){
