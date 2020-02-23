@@ -1,8 +1,16 @@
 // SteamAPI FaQ: https://developer.valvesoftware.com/wiki/Steam_Web_API
 
 // Variable declarations
-let inputText = document.getElementById("steamID");
+// let inputText = document.getElementById("steamID");
 let submitButton = document.getElementById("sendBtn").addEventListener('click', ()=> checkInputText(inputText.value));   
+
+// For testing.
+function fakeInput(){
+    let inputText = "qubuxz";
+    checkInputText(inputText);
+}
+
+fakeInput();
 
 
 inputText.onkeydown = function(e){
@@ -28,7 +36,7 @@ function isValidID(inputText){
     if(!isNaN(inputText) && getLength(inputText) === 17){
         validID = true;
     }
-    
+
     else{
         validID = false;
     }
@@ -47,12 +55,12 @@ function getSteamID(inputText){
     .then(function(response) {
         steamID = response.data.response.steamid;
         getPersonaName(steamID);
+        getAvatarFull(steamID);
     });
 }
 
 function getPersonaName(steamID){
     let personaName;
-    console.log(steamID)
     axios.get("/getpersonaname",{
         params:{
             steamID
@@ -64,6 +72,19 @@ function getPersonaName(steamID){
             });
     }
 
+    function getAvatarFull(steamID){
+        let url;
+        axios.get("/getpersonaname",{
+            params:{
+                steamID
+                }
+            })
+                .then(function(response) {
+                    url = response.data.response.players[0].avatarfull;
+                setPlayerAvatar(url);
+                });
+        }
+
 // Gets the length of the input-string.
 function getLength(inputText){
     if(!inputText.isNaN){
@@ -73,6 +94,10 @@ function getLength(inputText){
 
 function setPlayerName(name){
     document.getElementById('player-name').innerHTML = name;
+}
+
+function setPlayerAvatar(url){
+    document.getElementById('player-avatar').src = url;
 }
 
 
