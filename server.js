@@ -19,9 +19,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 //     "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=440&key=" + APIKey + "&steamid=" + steamID,
 //     //Can search for multiple players bans. Separate ids with comma: "steamids="XXXXX", "YYYYY", "ZZZZZ"
 //     "http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=" + APIKey + "&steamids=" + steamID,
-//      "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=440&key=4CFB0E68E2168BE259F51B41ED5791AD&steamid=76561198089603744",
+//      "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key=4CFB0E68E2168BE259F51B41ED5791AD&steamid=76561198089603744",
 //      "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=4CFB0E68E2168BE259F51B41ED5791AD&steamid=76561198089603744&format=json",
-//      "http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=4CFB0E68E2168BE259F51B41ED5791AD&appid=218620"
+//      "http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=4CFB0E68E2168BE259F51B41ED5791AD&appid=730"
 
 // ]
 

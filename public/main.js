@@ -1,29 +1,30 @@
-// SteamAPI FaQ: https://developer.valvesoftware.com/wiki/Steam_Web_API
+// SteamAPI info: https://developer.valvesoftware.com/wiki/Steam_Web_API
 
 // Variable declarations
 // let inputText = document.getElementById("steamID");
 let submitButton = document.getElementById("sendBtn").addEventListener('click', ()=> checkInputText(inputText.value));   
 
-// For testing.
+// For testing without entering anything in the submitform. 
+// Line 4 must be commented out to use this!
+fakeInput();
 function fakeInput(){
     let inputText = "qubuxz";
     checkInputText(inputText);
 }
 
-fakeInput();
 
-
+// Sends form data when 'RETURN' is pressed
 inputText.onkeydown = function(e){
     if(e.keyCode === 13){
         checkInputText(inputText.value);
     }
 }
 
+// If user-input is not steamID, find steamID via getPersonaName
 function checkInputText(inputValue){
     if(getLength(inputValue) >= 2 && (!isValidID(inputValue))){
             getSteamID(inputValue);
-    }
-        
+    }  
     else{
             getPersonaName(inputValue);
      }
@@ -44,6 +45,7 @@ function isValidID(inputText){
     return validID;
 }
 
+// Gets userdata from the server and calls the functions that gets more player data.
 function getSteamID(inputText){
     let steamID;
     
@@ -59,6 +61,7 @@ function getSteamID(inputText){
     });
 }
 
+// Gets the player name based of the steamID and passes it to setPlayerName
 function getPersonaName(steamID){
     let personaName;
     axios.get("/getpersonaname",{
@@ -72,6 +75,7 @@ function getPersonaName(steamID){
             });
     }
 
+    // Gets the player avatar based of the steamID and passes it to setPlayerAvatar
     function getAvatarFull(steamID){
         let url;
         axios.get("/getpersonaname",{
@@ -91,18 +95,6 @@ function getLength(inputText){
         return inputText.toString().length;
     }
 }
-
-function setPlayerName(name){
-    document.getElementById('player-name').innerHTML = name;
-}
-
-function setPlayerAvatar(url){
-    document.getElementById('player-avatar').src = url;
-}
-
-
-
-
 
 
 
@@ -132,8 +124,11 @@ element.style.display = "block";
 
 
 
+// Changes to HTML
+function setPlayerName(name){
+    document.getElementById('player-name').innerHTML = name;
+}
 
-
-
-
-
+function setPlayerAvatar(url){
+    document.getElementById('player-avatar').src = url;
+}
