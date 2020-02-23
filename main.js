@@ -1,32 +1,31 @@
 // SteamAPI FaQ: https://developer.valvesoftware.com/wiki/Steam_Web_API
 
-    // söker på qubuxz med min key
-    // http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=4CFB0E68E2168BE259F51B41ED5791AD&steamids=76561198089603744
-
 // Variable declarations
 let submitButton = document.getElementById("btn");
-// let inputText = document.getElementById("steamID");
-let inputText = "qubuxz";
-let steamID = "";
-let APIKey = "4CFB0E68E2168BE259F51B41ED5791AD";
+let inputText = document.getElementById("steamID");
 
-// 0: GetPlayerSummaries, 1:GetRecentlyPlayedGames, 2: GetFriendList, 3: getUserStatsForGame, 4: GetPlayerBans.
+let inputText = "qubuxz";
+let steamID = "76561198089603744";
+let APIKey = "4CFB0E68E2168BE259F51B41ED5791AD";
+let playerData;
+
+// 0: GetPlayerSummaries, 1: GetFriendList, 2: getUserStatsForGame, 3: GetPlayerBans.
 let callURLs = [
     "http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=" + APIKey + "&vanityurl=" + inputText,
-    "http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=" + APIKey + "&steamid=" + steamID + "&format=json",
     "http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=" + APIKey + "&steamid=" + steamID + "&relationship=friend",
     "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=440&key=" + APIKey + "&steamid=" + steamID,
     //Can search for multiple players bans. Separate ids with comma: "steamids="XXXXX", "YYYYY", "ZZZZZ"
     "http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=" + APIKey + "&steamids=" + steamID 
 ]
 
-// Named functions
+// Gets the length of the input-string.
 function getLength(inputText){
     if(!inputText.isNaN){
         return inputText.toString().length;
     }
 }
 
+// Returns true if input-string is a 17 digit number.
 function isValidID(inputText){
     let validID = false; 
     
@@ -40,58 +39,35 @@ function isValidID(inputText){
     return validID;
 }
 
-let data;
+// function testCall(){
+//     let url = callurls[x];
+//     request = new XMLHttpRequest();
+//     request.open('GET', url); // lägg till 'true' som arg för  async.
+//     request.onload = function () {
+//         data = JSON.parse(request.responseText);
+//     };
+//     req.send();
+// }
 
-
-
-function testCall(){
-    // if(!isValidID) {
-    //     let ourReq = new XMLHttpRequest();
-    //     ourReq.open("GET", "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=4CFB0E68E2168BE259F51B41ED5791AD&steamids=76561198089603744");
-    //     ourReq.onload = function () {
-    //     data = JSON.parse(ourReq.responseText);
-    //     console.log(data[0]);  
-    // };
-    // ourReq.send();
-
-
-    fetch("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=4CFB0E68E2168BE259F51B41ED5791AD&steamids=76561198089603744", {
-        mode: 'no-cors' // 'cors' by default
-      })
-      .then(function(response) {
-        console.log(response.steamID);
-      });
-}
-
-
-
-
-
-
-
-
-
-
-function GetPlayerSummaries(){
+// Sends a request for playerdata and stores the data in playerData
+function GetPlayerSummaries(player){
     let request = new XMLHttpRequest();
-   if(!validID){
-    
+  
+    if(!validID(player)){
         // om "No match, skicka fel
-        // om "success" -> userID = vad det nu är för svar.
+        // om "success" -> steamID = 17-siffrigt steamID.
    }
-        else{
-        // userID = 17IdValue
-        request.open('GET', 'Här ska det stå api-req för GetPlayerSummaries', true)
-    }
 
+    request.open('GET', 'Här ska det stå api-req för GetPlayerSummaries', true)
 
     request.onload = function() {
-    // Begin accessing JSON data here
+        playerData = JSON.parse(request.responseText);
     }
 
 // Send request
 request.send()
 }
+
 
 
 
@@ -116,7 +92,6 @@ function GetPlayerBans(){
     //hämtar data om bans
 }
 
-
 function hideElement(element){
 element.style.display = "none";
 }
@@ -124,14 +99,6 @@ element.style.display = "none";
 function showElement(){
 element.style.display = "block";
 }
-
-// Annonumus funkctions
-
-
-// submitButton.onclick = function(){
-//     submitButton.style.display = "none";
-// };   
-
 
 
 
