@@ -1,18 +1,24 @@
 // SteamAPI FaQ: https://developer.valvesoftware.com/wiki/Steam_Web_API
 
 // Variable declarations
-let submitButton = document.getElementById("btn");
 let inputText = document.getElementById("steamID");
+let submitButton = document.getElementById("sendBtn").addEventListener('click', ()=> checkInputText(inputText.value));   
 
-// let inputText = "qubuxz";
-let steamID = "76561198089603744";
-let APIKey = "4CFB0E68E2168BE259F51B41ED5791AD";
 
-// Gets the length of the input-string.
-function getLength(inputText){
-    if(!inputText.isNaN){
-        return inputText.toString().length;
+inputText.onkeydown = function(e){
+    if(e.keyCode === 13){
+        checkInputText(inputText.value);
     }
+}
+
+function checkInputText(inputValue){
+    if(getLength(inputValue) >= 2 && (!isValidID(inputValue))){
+            getSteamID(inputValue);
+    }
+        
+    else{
+            getPersonaName(inputValue);
+     }
 }
 
 // Returns true if input-string is a 17 digit number.
@@ -22,6 +28,7 @@ function isValidID(inputText){
     if(!isNaN(inputText) && getLength(inputText) === 17){
         validID = true;
     }
+    
     else{
         validID = false;
     }
@@ -29,45 +36,44 @@ function isValidID(inputText){
     return validID;
 }
 
-
-function getPlayerName(name){
-    document.getElementById('player-name').innerHTML = name;
+function getSteamID(inputText){
+    let steamID;
+    
+    axios.get("/getsteamid",{
+        params:{
+            inputText
+        }
+    })
+    .then(function(response) {
+        steamID = response.data.response.steamid;
+        getPersonaName(steamID);
+    });
 }
 
-
-getPlayerName();
-testCall();
-
-function testCall(){
-let playerName;
-    axios.get("/playerdata")
-      .then(function(response) {
-        playerName = response.data.response.players[0].personaname;
-        getPlayerName(playerName);
-      });
-}
-
-
-// Sends a request for playerdata and stores the data in playerData
-function GetPlayerSummaries(player){
-    let request = new XMLHttpRequest();
-  
-    if(!validID(player)){
-        // om "No match, skicka fel
-        // om "success" -> steamID = 17-siffrigt steamID.
-   }
-
-    request.open('GET', 'Här ska det stå api-req för GetPlayerSummaries', true)
-
-    request.onload = function() {
-        playerData = JSON.parse(request.responseText);
+function getPersonaName(steamID){
+    let personaName;
+    console.log(steamID)
+    axios.get("/getpersonaname",{
+        params:{
+            steamID
+            }
+        })
+            .then(function(response) {
+            personaName = response.data.response.players[0].personaname;
+            setPlayerName(personaName);
+            });
     }
 
-// Send request
-request.send()
+// Gets the length of the input-string.
+function getLength(inputText){
+    if(!inputText.isNaN){
+        return inputText.toString().length;
+    }
 }
 
-
+function setPlayerName(name){
+    document.getElementById('player-name').innerHTML = name;
+}
 
 
 
