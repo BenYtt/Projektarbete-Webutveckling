@@ -30,19 +30,32 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
+// steam-API calls
+
+// Requests the steamID matching the vanity player-url from the steam-server
 app.get('/getsteamid', function(req, res) {
-    axios.get("http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key="+ APIKey + "&vanityurl=" + req.query.inputText)
+    axios.get("http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=" + APIKey + "&vanityurl=" + req.query.inputText)
       .then(function(response) {
         res.send(response.data);
       });
 });
 
+// Requests the player summary matching the steamID from the steam-server.
 app.get('/getpersonaname', function(req, res) {
-    axios.get("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key="+ APIKey + "&steamids=" + req.query.steamID)
+    axios.get("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=" + APIKey + "&steamids=" + req.query.steamID)
       .then(function(response) {
         res.send(response.data);
       });
 });
+
+// Requests data of owned games matching the steamID from the steam-server.
+app.get('/getownedgames', function(req, res) {
+  axios.get("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=" + APIKey + "&steamid=" + req.query.steamID + "&format=json")
+    .then(function(response) {
+      res.send(response.data);
+    });
+});
+
 
 
 app.listen(8080);
