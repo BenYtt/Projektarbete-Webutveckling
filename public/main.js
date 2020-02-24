@@ -116,36 +116,6 @@ function getPlaytime(steamID){
             setPlaytime(totalMinutesPlayed);
         });
     }
-    
-
-
-
-
-
-function getUserStatsForGame(){
-    // Skaffar data per spel och user
-}
-
-function GetFriendData(){
-    // Hämta info om friends
-}
-
-function GetRecentlyPlayedGames (){
-    // Hämta info om friends
-}
-
-function GetPlayerBans(){
-    //hämtar data om bans
-}
-
-function hideElement(element){
-element.style.display = "none";
-}
-
-function showElement(){
-element.style.display = "block";
-}
-
 
 
 // Changes to HTML
