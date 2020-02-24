@@ -6,7 +6,7 @@ let submitButton = document.getElementById("sendBtn").addEventListener('click', 
 
 
 // For testing without entering anything in the submitform. 
-// Line 4 must be commented out to use this!
+// Line 4 and must be commented out to use this!
 fakeInput();
 function fakeInput(){
     let inputText = "qubuxz";
@@ -65,7 +65,7 @@ function getSteamID(inputText){
         steamID = response.data.response.steamid;
         getPersonaName(steamID);
         getAvatarFull(steamID);
-        //calculatePlaytime(steamID)
+        getPlaytime(steamID)
     });
 }
 
@@ -83,7 +83,7 @@ function getPersonaName(steamID){
             });
     }
 
-// Gets the player avatar based of the steamID and passes it to setPlayerAvatar
+// Gets the player avatar based of the steamID and passes it to setPlayerAvatar.
 function getAvatarFull(steamID){
     let url;
     axios.get("/getpersonaname",{
@@ -97,14 +97,9 @@ function getAvatarFull(steamID){
             });
     }
 
-
+// Gets a players total playtime based of the steamiD and passes it to setPlaytime.
 function getPlaytime(steamID){
-    let gameCount = 0;
     let totalMinutesPlayed = 0;
-
-    // En for-loop ska loopa igenom arrayen games från json-objektet
-    // for i = 0; i < gamesCount; i++
-    // totalMinutesPlayed += games[i].playtime_forever 
 
     axios.get("/getownedgames",{
     params:{
@@ -112,14 +107,17 @@ function getPlaytime(steamID){
         }
     })
         .then(function(response) {
-            gameCount = response.data.response.game_count;
-            setPlaytime(gameCount, totalMinutesPlayed);
+            const gameCount = response.data.response.game_count;
+            
+            for (let i = 0; i < gameCount; i++) {
+                totalMinutesPlayed += response.data.response.games[i].playtime_forever;
+            }
+            
+            setPlaytime(totalMinutesPlayed);
         });
-}
+    }
+    
 
-function setPlaytime(gameCount, totalMinutesPlayed){
-    let totalHoursPLyed = round(totalMinutesPlayed / 60);
-}
 
 
 
@@ -157,4 +155,12 @@ function setPlayerName(name){
 
 function setPlayerAvatar(url){
     document.getElementById('player-avatar').src = url;
+}
+
+function setPlaytime(totalMinutesPlayed){
+    let totalHoursPLyed = Math.round(totalMinutesPlayed / 60);
+    console.log("Timeplayed: " + totalHoursPLyed);
+
+    document.getElementById('hours-played').innerHTML = 
+    "Your hours: " + totalHoursPLyed + "h";
 }
