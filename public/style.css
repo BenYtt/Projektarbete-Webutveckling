@@ -115,7 +115,7 @@ html, body {
         width: 100%;
         justify-content: center;
         align-items: center;
-        display: none;
+        display: flex;
     }
 
     .id-picture{
@@ -129,15 +129,13 @@ html, body {
         width: 184px;
         border-radius: 50%;
         border: solid;
-        margin-top: 0.5rem;
+        margin-top: 2rem;
     }
     
     .profile-name{
         margin: 0;
         text-align: center;
-        margin-top: 2   rem;
-
-
+        margin-top: 2rem;
     }
     
     .hours-played{
@@ -152,13 +150,13 @@ html, body {
 /* Charts */
 
  .charts {
-     display: none;
-	 width: 90%;
+     display: flex;
+	 width: 35%;
 	 z-index: 10;
 }
- .chart {
+ /* .chart {
 	 margin: 30px 0 0;
-}
+} */
  .chart:first-child {
 	 margin: 0;
 }
@@ -350,7 +348,7 @@ html, body {
         width: 100%;
         justify-content: center;
         align-items: center;
-        display: none;
+        display: flex;
     }
 
     .id-picture{
@@ -387,8 +385,8 @@ html, body {
 /* Charts */
 
  .charts {
-     display: none;
-	 width: 90%;
+     display: block;
+	 width: 30%;
 	 z-index: 10;
 }
  .chart {
