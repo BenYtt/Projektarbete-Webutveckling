@@ -32,7 +32,8 @@ function getLength(inputText) {
 function checkInputText(inputValue) {
     if (getLength(inputValue) >= 2 && (!isValidID(inputValue))) {
         getSteamID(inputValue);
-    }
+
+    }   
     else {
         getPersonaName(inputValue);
         getAvatarFull(inputValue);
@@ -42,10 +43,16 @@ function checkInputText(inputValue) {
     }
 }
 
+function isValidInput() {
+    if (testString.length > 1 && testString.length < 20) {
+        return true;
+    }
+}
+
 // Returns true if input-string is a 17 digit number.
 function isValidID(inputText) {
     let validID = false;
-    
+
     if (!isNaN(inputText) && getLength(inputText) === 17) {
         validID = true;
         console.log("Input is a valid steamID.");
@@ -70,7 +77,7 @@ function getSteamID(inputText) {
             getPersonaName(steamID);
             getAvatarFull(steamID);
             getPlaytime(steamID);
-            
+
             console.log("Sent steamID: " + steamID + " to funtions.");
         });
 }
@@ -86,7 +93,7 @@ function getPersonaName(steamID) {
             let personaName = response.data.response.players[0].personaname;
             setPlayerName(personaName);
 
-            console.log("Persona name set.");
+            console.log("Persona name set: " + personaName);
         });
 }
 
@@ -101,14 +108,14 @@ function getAvatarFull(steamID) {
             let url = response.data.response.players[0].avatarfull;
             setPlayerAvatar(url);
 
-            console.log("Avatar set.");
+            console.log("Avatar set: " + url);
         });
 }
 
 // Gets a players total playtime based of the steamiD and passes it to setPlaytime.
 function getPlaytime(steamID) {
     let totalMinutesPlayed = 0;
-    
+
     axios.get("/getownedgames", {
         params: {
             steamID
@@ -116,7 +123,7 @@ function getPlaytime(steamID) {
     })
         .then(function (response) {
             const gameCount = response.data.response.game_count;
-
+            console.log(gameCount);
             for (let i = 0; i < gameCount; i++) {
                 totalMinutesPlayed += response.data.response.games[i].playtime_forever;
             }

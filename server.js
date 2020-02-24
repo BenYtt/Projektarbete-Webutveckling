@@ -28,7 +28,8 @@ app.get('/getsteamid', function(req, res) {
 
 // Requests the player summary matching the steamID from the steam-server.
 app.get('/getpersonaname', function(req, res) {
-    axios.get("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=" + APIKey + "&steamids=" + req.query.steamID)
+    axios.get("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=" + APIKey + 
+    "&include_played_free_games=true&include_appinfo=1&steamids=" + req.query.steamID)
       .then(function(response) {
         res.send(response.data);
       });
@@ -39,7 +40,6 @@ app.get('/getownedgames', function(req, res) {
   axios.get("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=" + APIKey + "&steamid=" + req.query.steamID + "&format=json")
     .then(function(response) {
       res.send(response.data);
-      console.log(response.data);
     });
 });
 
