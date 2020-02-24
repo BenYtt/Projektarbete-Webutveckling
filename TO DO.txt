@@ -1,0 +1,15 @@
+Vad ska fixas:
+
+    Hantera för många calls (tomt objekt tillbaka)
+    Hantera vad som händer om det inte finns en macth på id eller användarnamn
+
+    detta ska göras genom att vi visar en could not find user or "search-limit reached"
+
+    eventuellt lösa att man inte kan skriva ren kod i vårt inputfält
+
+    bild och det som är beroende av javascrips laddas in långammare och blir fult. 
+    sidan ser dålig ut för Benjamin, kan inte scrolla och ser inte all info
+
+    generellt se till att alla media querys fungerar som det är tänkt. 
+
+    använda oss av hiroku istället för att hosta med express
