@@ -2,7 +2,13 @@
 
 let inputText = document.getElementById("steamID");
 let submitButton = document.getElementById("sendBtn").addEventListener('click', () => checkInputText(inputText.value));
+
 var gameNames = {};
+
+function showInfo() {
+    let x = document.getElementById("show-info");
+      x.style.display = "block";
+  }
 
 // For testing without entering anything in the submitform. 
 
@@ -18,6 +24,7 @@ var gameNames = {};
 inputText.onkeydown = function (e) {
     if (e.keyCode === 13) {
         checkInputText(inputText.value);
+        showInfo();
     }
 }
 
@@ -143,7 +150,6 @@ function setPlaytime(totalMinutesPlayed) {
     document.getElementById('hours-played').innerHTML =
         "Your hours: " + totalHoursPLyed + "h";
 }
-
 
 // For future developement
 

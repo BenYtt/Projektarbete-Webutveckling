@@ -5,6 +5,10 @@ html, body {
     padding: 0;
 }
 
+#show-info{
+    display: none;
+}
+
 .container {
     font-family: "Lato", Arial, sans-serif;
     width: 100%;
@@ -83,11 +87,11 @@ html, body {
     }
 
 
+
     ::placeholder{
         font-family: "Lato", Arial, sans-serif;
         font-size: 15px;
         font-weight:bolder;
-        text-align: center;
     }
     
     #sendBtn{
@@ -566,3 +570,4 @@ html, body {
         height: 100vh;
     }
 } */
+
