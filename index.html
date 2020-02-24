@@ -15,38 +15,41 @@
         <h1>STEAM_HOURS</h1>
       </div>
 
+      <div class ="submission-form">
+        <input type="text" id="steamID" placeholder="ENTER_STEAMID">
+        <input type="submit" value="SEND" id="sendBtn">
+      </div>
+
+
+      <div id="show-info">
+
       
-        <div class ="submission-form">
-            <input type="text" id="steamID" placeholder="ENTER_STEAMID">
-            <input type="submit" value="SEND" id="sendBtn">
-        </div>
-        
-        <div id="profile-container">
-          <div class="profile">
-            <div class="id-picture">
-                <img src="" alt="Player Avatar" id="player-avatar">
-                <h2 class="profile-name" id="player-name"></h2>
-                <h3 class ="hours-played" id="hours-played"></h3>
-            </div>
+      <div id="profile-container">
+        <div class="profile">
+          <div class="id-picture">
+              <img src="" alt="Player Avatar" id="player-avatar">
+              <h2 class="profile-name" id="player-name"></h2>
+              <h3 class ="hours-played" id="hours-played"></h3>
           </div>
-
-
-
-            <!-- 6. Staggered Horizontal Bars https://speckyboy.com/code-snippets-css3-bar-graphs/ -->
-            <div class="charts">
-                <h2 class="chart__title">Games</h2>
-
-                <ul class="chart--horiz">
-                  <li class="chart-bar" style="width: 69%;">
-                    <span class="chart__label">
-                    </span>
-                  </li>
-                </ul>
-            </div>
-          </div>
-
         </div>
-       
+
+
+
+          <!-- 6. Staggered Horizontal Bars https://speckyboy.com/code-snippets-css3-bar-graphs/ -->
+          <div class="charts">
+              <h2 class="chart__title">Games</h2>
+
+              <ul class="chart--horiz">
+                <li class="chart-bar" style="width: 69%;">
+                  <span class="chart__label">
+                  </span>
+                </li>
+              </ul>
+          </div>
+        </div>
+      </div>
+      </div>
+
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./main.js"></script>
