@@ -1,7 +1,8 @@
 var express = require('express');
 var app = express();
-
 var path = require('path');
+
+// Private API-key
 let APIKey = "9C85786D6BDC807AE871138ED9022748";
 
 const axios = require('axios');
@@ -9,24 +10,11 @@ const axios = require('axios');
 // Express Middleware for serving static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 0: ResolveVanityURL, 1: GetPlayerSummaries, 2: GetPlayerSummaries, 3: GetFriendList, 4: GetUserStatsForGame, 5: GetPlayerBans, 6:GetUserStatsForGame, 7: GetOwnedGames, 8: ISteamUserStats, 9: GetSchemaForGame  .
-// let callURLs = [
-//     "http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=" + APIKey + "&vanityurl=" + inputText,
-//     "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key="+ APIKey + "&steamids=" + steamID,
-//     "http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=" + APIKey + "&steamid=" + steamID + "&relationship=friend",
-//     "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=440&key=" + APIKey + "&steamid=" + steamID,
-//     //Can search for multiple players bans. Separate ids with comma: "steamids="XXXXX", "YYYYY", "ZZZZZ"
-//     "http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=" + APIKey + "&steamids=" + steamID,
-//      "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key=4CFB0E68E2168BE259F51B41ED5791AD&steamid=76561198089603744",
-//      "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=4CFB0E68E2168BE259F51B41ED5791AD&steamid=76561198089603744&format=json",
-//      "http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=4CFB0E68E2168BE259F51B41ED5791AD&appid=730"
-
-// ]
-
 // viewed at http://localhost:8080
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
+
 
 // steam-API calls
 
@@ -55,6 +43,14 @@ app.get('/getownedgames', function(req, res) {
     });
 });
 
+
+app.listen(8080);
+
+
+
+// For future developement
+
+
 // // Requests the game info based of the gameID from the steam server.
 // app.get('/getschemaforgame', function(req, res) {
 //   axios.get("http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=" + APIKey + "&appid=" + req.query.gameID)
@@ -62,7 +58,3 @@ app.get('/getownedgames', function(req, res) {
 //       res.send(response.data);
 //     });
 // });
-
-
-app.listen(8080);
-
