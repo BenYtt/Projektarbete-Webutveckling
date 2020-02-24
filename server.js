@@ -2,9 +2,7 @@ var express = require('express');
 var app = express();
 
 var path = require('path');
-let steamID;
 let APIKey = "4CFB0E68E2168BE259F51B41ED5791AD";
-let playerData;
 
 const axios = require('axios');
 
