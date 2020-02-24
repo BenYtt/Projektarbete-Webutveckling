@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 var path = require('path');
-let APIKey = "4CFB0E68E2168BE259F51B41ED5791AD";
+let APIKey = "9C85786D6BDC807AE871138ED9022748";
 
 const axios = require('axios');
 
@@ -51,16 +51,17 @@ app.get('/getownedgames', function(req, res) {
   axios.get("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=" + APIKey + "&steamid=" + req.query.steamID + "&format=json")
     .then(function(response) {
       res.send(response.data);
+      console.log(response.data);
     });
 });
 
-// Requests the game info based of the gameID from the steam server.
-app.get('/getownedgames', function(req, res) {
-  axios.get("http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=" + APIKey + "&appid=" + req.query.gameID)
-    .then(function(response) {
-      res.send(response.data);
-    });
-});
+// // Requests the game info based of the gameID from the steam server.
+// app.get('/getschemaforgame', function(req, res) {
+//   axios.get("http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=" + APIKey + "&appid=" + req.query.gameID)
+//     .then(function(response) {
+//       res.send(response.data);
+//     });
+// });
 
 
 app.listen(8080);
