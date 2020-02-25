@@ -1,0 +1,117 @@
+----- for future development
+ <!-- 6. Staggered Horizontal Bars https://speckyboy.com/code-snippets-css3-bar-graphs/ -->
+          <div class="charts">
+              <h2 class="chart__title">Games</h2>
+
+              <ul class="chart--horiz">
+                <li class="chart-bar" style="width: 69%;">
+                  <span class="chart__label">
+                  </span>
+                </li>
+              </ul>
+          </div>
+
+
+
+/* Charts */
+
+ .charts {
+     display: none;
+	 width: 30%;
+	 z-index: 10;
+}
+ .chart {
+	 margin: 30px 0 0;
+}
+ .chart:first-child {
+	 margin: 0;
+}
+ .chart__title {
+     display: flex;
+     justify-content: center;
+	 font-weight: bold;
+	 opacity: 0;
+     animation: 1s anim-lightspeed-in ease forwards;
+}
+ .chart--prod .chart__title {
+	 animation-delay: 3.3s;
+}
+ .chart--design .chart__title {
+	 animation-delay: 4.5s;
+}
+ .chart--horiz {
+	 overflow: hidden;
+}
+ .chart-bar {
+	 height: 30px;
+     margin-bottom: 10px;
+     font-weight: 900;
+	 background: linear-gradient(to left, #4cb8c4, #3cd3ad);
+	 border-top-right-radius: 4px;
+	 border-bottom-right-radius: 4px;
+	 opacity: 0;
+     animation: 1s anim-lightspeed-in ease forwards;
+}
+ .chart--dev .chart-bar:nth-of-type(11) {
+	 animation-delay: 2.7s;
+}
+ .chart--dev .chart-bar:nth-of-type(10) {
+	 animation-delay: 2.5s;
+}
+ .chart--dev .chart-bar:nth-of-type(9) {
+	 animation-delay: 2.3s;
+}
+ .chart--dev .chart-bar:nth-of-type(8) {
+	 animation-delay: 2.1s;
+}
+ .chart--dev .chart-bar:nth-of-type(7) {
+	 animation-delay: 1.9s;
+}
+ .chart--dev .chart-bar:nth-of-type(6) {
+	 animation-delay: 1.7s;
+}
+ .chart--dev .chart-bar:nth-of-type(5) {
+	 animation-delay: 1.5s;
+}
+ .chart--dev .chart-bar:nth-of-type(4) {
+	 animation-delay: 1.3s;
+}
+ .chart--dev .chart-bar:nth-of-type(3) {
+	 animation-delay: 1.1s;
+}
+ .chart--dev .chart-bar:nth-of-type(2) {
+	 animation-delay: 0.9s;
+}
+ .chart--dev .chart-bar:nth-of-type(1) {
+	 animation-delay: 0.7s;
+}
+ .chart--prod .chart-bar:nth-of-type(2) {
+	 animation-delay: 4.2s;
+}
+ .chart--prod .chart-bar:nth-of-type(1) {
+	 animation-delay: 4s;
+}
+ .chart--design .chart-bar:nth-of-type(3) {
+	 animation-delay: 5.6s;
+}
+ .chart--design .chart-bar:nth-of-type(2) {
+	 animation-delay: 5.4s;
+}
+ .chart--design .chart-bar:nth-of-type(1) {
+	 animation-delay: 5.2s;
+}
+ .chart__label {
+	 padding-left: 10px;
+	 line-height: 30px;
+	 color: white;
+}
+ @keyframes anim-lightspeed-in {
+	 0% {
+		 transform: translateX(-200%);
+		 opacity: 1;
+	}
+	 100% {
+		 transform: translateX(0);
+		 opacity: 1;
+	}
+}

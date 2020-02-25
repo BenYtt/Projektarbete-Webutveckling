@@ -150,11 +150,13 @@ function getPlayTime(steamID) {
 // Changes to HTML
 
 function setPlayerName(name) {
-    document.getElementById('player-name').innerHTML = name;
+    $(".profile-name")[0].innerHTML = name;
+    // document.getElementById('player-name').innerHTML = name;
 }
 
 function setPlayerAvatar(url) {
-    document.getElementById('player-avatar').src = url;
+    $("#player-avatar")[0].src = url;
+    // document.getElementById('player-avatar').src = url;
 }
 
 function setPlayTime(totalMinutesPlayed) {
@@ -163,54 +165,3 @@ function setPlayTime(totalMinutesPlayed) {
     document.getElementById('hours-played').innerHTML =
         "Your hours: " + totalHoursPLyed + "h";
 }
-
-
-
-// For future developement
-
-// // function getGameIDs(steamID) {
-//         axios.get("/getownedgames", {
-//             params: {
-//                 steamID
-//             }
-//         })
-//             .then(function (response) {
-//                 const gameCount = response.data.response.game_count;
-
-
-//             // for (let i = 0; i < gameCount; i++) {
-//             //     gameNames[i] = response.data.response.games[i].appid;
-//             //     console.log(gameNames[i]);
-//             // }
-
-//            // matchGameIDs();
-//         });
-// }
-
-// function matchGameIDs() {
-//     //matchar appid och gamename
-
-//     let gameID = gameNames[0];
-//     console.log(gameID);
-//         axios.get("/getownedgames", {
-//             params: {
-//                 gameID
-//             }
-//         })
-//             .then(function (response) {
-//                 console.log(response.data);
-//             });
-
-//     // for (let i = 0; i <  2; i++) {
-//     //     let gameID = gameNames[i];
-
-//     //     axios.get("/getschemaforgame", {
-//     //         params: {
-//     //             gameID
-//     //         }
-//     //     })
-//     //         .then(function (response) {
-//     //             console.log(response.data);
-//     //         });
-//     // }
-// }
