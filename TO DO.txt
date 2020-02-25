@@ -1,16 +1,16 @@
 Vad ska fixas:
 
-    Hantera för många calls (tomt objekt tillbaka)
-    Hantera vad som händer om det inte finns en macth på id eller användarnamn
+    Benjmain:
     vad händer om man har privat profil
-
-    detta ska göras genom att vi visar en could not find user or "search-limit reached"
-
     eventuellt lösa att man inte kan skriva ren kod i vårt inputfält
+    kommentera det jag jobbat med
 
+
+    Anton:
     bild och det som är beroende av javascrips laddas in långammare och blir fult. 
-    sidan ser dålig ut för Benjamin, kan inte scrolla och ser inte all info
+    kommentera det jag jobbat med
 
-    generellt se till att alla media querys fungerar som det är tänkt. 
 
+    Båda: 
+    kolla alla namn i alla filer
     använda oss av hiroku istället för att hosta med express
