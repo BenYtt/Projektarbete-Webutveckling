@@ -15,18 +15,19 @@ body {
   }
 
 .container {
-  font-family: "Lato", Arial, sans-serif;
-  width: 100%;
-  height: 100vh;
-  background-repeat: repeat-y;
-  color: #fff;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  position: fixed;
-  animation: change 20s ease-in-out infinite;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* align items: y-led || justify-content: x-led*/
+    font-family: "Lato", Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    background-repeat: repeat-y;
+    color: #fff;
+    background: linear-gradient(-45deg, #EE7752, #e73C7e, #23A6D5, #23D5AB);
+    background-size: 400% 400%;
+    position: fixed;
+    animation: change 20s ease-in-out infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    overflow:scroll;
 }
 
 @keyframes change {
@@ -58,83 +59,157 @@ body {
   text-align: center;
 }
 
-h1 {
-  font-size: 45px;
-  margin: 2vh;
-  font-weight: 1200;
-  text-align: center;
-}
+/* Media */
+@media all and (max-width: 700px){
 
-/* Information form and button */
-.submission-form {
-  width: 100%;
-  font-family: "Lato", Arial, sans-serif;
-  border: 0;
-  padding: 0.5rem;
-  color: white;
-  text-transform: uppercase;
-  cursor: pointer;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
+    /* Logo and text */
+    .logo-container{
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        height: 15vh;
+        justify-items: center;
+        padding: 3rem;
+        margin: 0;
+    }
+    
+ 
+    #logo {
+        color: white;
+        display: inline-block;  
+        text-align: center;
+    }
+    
+    h1{
+        font-size: 30px;
+        margin: 2vh;
+        font-weight: 1200;
+        text-align: center;
+    }
 
-.submission-form input {
-  font-family: "Lato", Arial, sans-serif;
-  font-size: 15px;
-  font-weight: bolder;
-  padding: 0.5em;
-  margin-right: 0.5rem;
-  box-sizing: border-box;
-  height: 50px;
-  width: 300px;
-}
+    /* Information form and button */
+    .submission-form{
+        width: 100%;
+        font-family: "Lato", Arial, sans-serif;
+        border:0;
+        padding:.5rem;
+        color:white;
+        text-transform:uppercase;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    
+    ::placeholder{
+        font-family: "Lato", Arial, sans-serif;
+        font-size: 13px;
+        font-weight:bolder;
+        text-align: center;
+    }
 
-::placeholder {
-  font-family: "Lato", Arial, sans-serif;
-  font-size: 15px;
-  font-weight: bolder;
-}
+    .submission-form input{
+        font-family: "Lato", Arial, sans-serif;
+        font-size: 10px;
+        font-weight:bolder;
+        margin-top: 1rem;
+        padding: 0.5em;;
+        margin-right: 0.5rem;
+        box-sizing: border-box;
+        height: 25px;
+        width: 150px;
+    }
+    
+    #sendBtn{
+        font-family: "Lato", Arial, sans-serif;
+        font-weight: 900;
+        font-size: 10px;
+        border: 1px;
+        background:#e73C7e;
+        padding:.2rem;
+        color:white;
+        height: 25px;
+        width:50px;
+        text-transform:uppercase;
+        cursor:pointer;
+        border: solid #FFF 1px;
 
-#sendBtn {
-  font-family: "Lato", Arial, sans-serif;
-  border: 0;
-  background: #e73c7e;
-  padding: 0.8rem;
-  color: white;
-  width: auto;
-  text-transform: uppercase;
-  cursor: pointer;
-  font-weight: 900;
-  height: 49px;
-  border: solid #fff 1px;
-}
+    }
 
-#sendBtn:hover {
-  background-color: rgb(66, 150, 180);
-  transition: ease-in-out 333ms;
-}
 
-/* Profile Info */
-.profile {
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
+    /* Profile Info */
+    .profile{
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
 
-.id-picture {
-  width: 100%;
-  display: inline-block;
-  text-align: center;
-}
+    .id-picture{
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+    }
 
-.id-picture img {
-  height: 184px;
-  width: 184px;
-  border-radius: 50%;
-  border: solid;
-  margin-top: 2rem;
+    .id-picture img{
+        height: 184px;
+        width: 184px;
+        border-radius: 50%;
+        border: solid;
+        margin-top: 0.5rem;
+    }
+    
+    .profile-name{
+        margin: 0;
+        text-align: center;
+        margin-top: 0.2rem;
+
+
+    }
+    
+    .hours-played{
+        margin: 0;
+        font-weight: bold;
+        padding: 1em;
+        text-align: center;
+    }
+
+    
+    #footer {
+        height: 100px;
+    }
+    
+    .table {
+        position: absolute;
+        text-align: center;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        line-height: 30px;
+
+    }
+    
+    ul#footer-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 1vh;
+    }
+    ul#footer-links li {
+        display: inline;
+        padding: 10px;
+
+    }
+
+    #github-image{
+        display: none;
+    }
+
+    #footer-links a{
+        text-decoration: none;
+        color: #FFF;
+        font-weight: 600;
+        
+    }
 }
 
 .profile-name {

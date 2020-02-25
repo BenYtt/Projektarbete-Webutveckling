@@ -1,7 +1,6 @@
 // SteamAPI info: https://developer.valvesoftware.com/wiki/Steam_Web_API
 
-let inputText = document.getElementById("steamID");
-let submitButton = document.getElementById("sendBtn").addEventListener('click', () => passSteamID(inputText.value));
+let inputText = $("#steamID")[0];
 
 let gameNames = {};
 
@@ -159,9 +158,10 @@ function setPlayerAvatar(url) {
     // document.getElementById('player-avatar').src = url;
 }
 
-function setPlayTime(totalMinutesPlayed) {
-    let totalHoursPLyed = Math.round(totalMinutesPlayed / 60);
-
-    document.getElementById('hours-played').innerHTML =
-        "Your hours: " + totalHoursPLyed + "h";
+function setPlaytime(totalMinutesPlayed) {
+    let totalHoursPlayed = Math.round(totalMinutesPlayed / 60);
+    $(".hours-played")[0].innerHTML = "Your hours: " + totalHoursPlayed + "h";
+    // document.getElementById('hours-played').innerHTML =
+    //     "Your hours: " + totalHoursPLyed + "h";
 }
+
