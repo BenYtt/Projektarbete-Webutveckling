@@ -3,11 +3,17 @@
 let inputText = document.getElementById("steamID");
 let submitButton = document.getElementById("sendBtn").addEventListener('click', () => checkInputText(inputText.value));
 
-var gameNames = {};
+let gameNames = {};
 
-function showInfo() {
-    let x = document.getElementById("show-info");
-      x.style.display = "block";
+function showInfo(isUser) {
+    if (isUser){
+        let x = document.getElementById("show-info");
+          x.style.display = "block";
+    }
+    else{
+        let x = document.getElementById("error-text");
+          x.style.display = "block";
+    }
   }
 
 // For testing without entering anything in the submitform. 
@@ -37,17 +43,30 @@ function getLength(inputText) {
 
 // Gets the steamID if needed. Otherwise it passes the steamID (inputValue) to the functions that gets more player data
 function checkInputText(inputValue) {
-    if (getLength(inputValue) >= 2 && (!isValidID(inputValue))) {
-        getSteamID(inputValue);
-        //console.log(getSteamID(inputValue))
-
-    }   
+    if (!isValidID(inputValue)) {
+        if (getSteamID(inputValue) === undefined){
+            showInfo(false)
+            console.log("No steamID matching vanity-name.");
+        }
+        else{
+            getSteamID(inputValue);
+        }
+    } 
+    
+    
     else {
-        getPersonaName(inputValue);
-        getAvatarFull(inputValue);
-        getPlaytime(inputValue);
+        if (getPersonaName(inputValue) === undefined){
+            showInfo(false)
+            console.log("No player with that steamID found.");
+            
+        }
+        else{
+            getPersonaName(inputValue);
+            getAvatarFull(inputValue);
+            getPlaytime(inputValue);
+            console.log("Sent steamID: " + inputValue + " to funtions.");
+        }
 
-        console.log("Sent steamID: " + inputValue + " to funtions.");
     }
 }
 
@@ -57,11 +76,11 @@ function isValidID(inputText) {
 
     if (!isNaN(inputText) && getLength(inputText) === 17) {
         validID = true;
-        console.log("Input is a valid steamID.");
+        console.log("Input is steamID format.");
     }
     else {
         validID = false;
-        console.log("Input is not a valid steamID.");
+        console.log("Input is not a steamID.");
     }
 
     return validID;
@@ -101,10 +120,17 @@ function getPersonaName(steamID) {
     })
         .then(function (response) {
             let personaName = response.data.response.players[0].personaname;
-            setPlayerName(personaName);
+            
+            if(personaName != undefined){
+                setPlayerName(personaName);
+                console.log("Persona name set: " + personaName);
+            }
+            else{
+                console.log("Persona name not set.")
+            }
+            
+            
             return personaName;
-
-            console.log("Persona name set: " + personaName);
         });
 }
 
@@ -118,7 +144,7 @@ function getAvatarFull(steamID) {
         .then(function (response) {
             let url = response.data.response.players[0].avatarfull;
             setPlayerAvatar(url);
-            return personaName;
+            return url;
 
             console.log("Avatar set: " + url);
         });
@@ -140,7 +166,7 @@ function getPlaytime(steamID) {
             }
 
             setPlaytime(totalMinutesPlayed);
-            return personaName;
+            return totalMinutesPlayed;
 
             console.log("Time played is calculated: " + totalMinutesPlayed);
         });
