@@ -2,12 +2,12 @@
 
 let inputText = $("#steamID")[0];
 
-// let submitButton = document.getElementById("sendBtn").addEventListener('click', () => checkInputText(inputText.value));
-let submitButton = $("#sendBtn")[0].click(checkInputText(inputText.value));
-let submitButton = $("#sendBtn")[0];
-let inputValue = inputText.value;
-const checkedInputValue = checkInputText(inputValue);
-submitButton.click(checkedInputValue);
+let submitButton = document.getElementById("sendBtn").addEventListener('click', () => checkInputText(inputText.value));
+// let submitButton = $("#sendBtn")[0].click(checkInputText(inputText.value));
+// let submitButton = $("#sendBtn")[0];
+// let inputValue = inputText.value;
+// const checkedInputValue = checkInputText(inputValue);
+// submitButton.click(checkedInputValue);
 
 var gameNames = {};
 
@@ -144,18 +144,17 @@ function getPlaytime(steamID) {
 
 function setPlayerName(name) {
     $(".profile-name")[0].innerHTML = name;
-    // document.getElementById('player-name').innerHTML = name;
+
 }
 
 function setPlayerAvatar(url) {
     $("#player-avatar")[0].src = url;
-    // document.getElementById('player-avatar').src = url;
+
 }
 
 function setPlaytime(totalMinutesPlayed) {
     let totalHoursPlayed = Math.round(totalMinutesPlayed / 60);
     $(".hours-played")[0].innerHTML = "Your hours: " + totalHoursPlayed + "h";
-    // document.getElementById('hours-played').innerHTML =
-    //     "Your hours: " + totalHoursPLyed + "h";
+
 }
 
