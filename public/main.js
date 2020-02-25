@@ -118,7 +118,6 @@ function getAvatarFull(steamID) {
         });
 }
 
-
 // Gets a players total playtime based of the steamiD and passes it to setPlaytime.
 function getPlaytime(steamID) {
     let totalMinutesPlayed = 0;

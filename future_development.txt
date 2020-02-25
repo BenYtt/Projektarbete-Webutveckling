@@ -1,4 +1,3 @@
-
 ----- for future development
  <!-- 6. Staggered Horizontal Bars https://speckyboy.com/code-snippets-css3-bar-graphs/ -->
           <div class="charts">
