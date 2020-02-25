@@ -2,6 +2,7 @@ Vad ska fixas:
 
     Hantera för många calls (tomt objekt tillbaka)
     Hantera vad som händer om det inte finns en macth på id eller användarnamn
+    vad händer om man har privat profil
 
     detta ska göras genom att vi visar en could not find user or "search-limit reached"
 

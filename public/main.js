@@ -5,16 +5,16 @@ let submitButton = document.getElementById("sendBtn").addEventListener('click', 
 
 let gameNames = {};
 
-function showInfo(isUser) {
-    if (isUser){
+function showInfo(userFound) {
+    if (userFound) {
         let x = document.getElementById("show-info");
-          x.style.display = "block";
+        x.style.display = "block";
     }
-    else{
+    else {
         let x = document.getElementById("error-text");
-          x.style.display = "block";
+        x.style.display = "block";
     }
-  }
+}
 
 // For testing without entering anything in the submitform. 
 
@@ -30,7 +30,6 @@ function showInfo(isUser) {
 inputText.onkeydown = function (e) {
     if (e.keyCode === 13) {
         checkInputText(inputText.value);
-        showInfo();
     }
 }
 
@@ -43,35 +42,36 @@ function getLength(inputText) {
 
 // Gets the steamID if needed. Otherwise it passes the steamID (inputValue) to the functions that gets more player data
 function checkInputText(inputValue) {
-    if (!isValidID(inputValue)) {
-        if (getSteamID(inputValue) === undefined){
-            showInfo(false)
-            console.log("No steamID matching vanity-name.");
+    
+    //om 17 siffror
+    if (isValidIDFormat(inputValue)) {
+        if(userFound(inputValue)){
+            console.log("här ska det skickas till funktioner");
         }
         else{
-            getSteamID(inputValue);
-        }
-    } 
-    
-    
-    else {
-        if (getPersonaName(inputValue) === undefined){
-            showInfo(false)
-            console.log("No player with that steamID found.");
-            
-        }
-        else{
-            getPersonaName(inputValue);
-            getAvatarFull(inputValue);
-            getPlaytime(inputValue);
-            console.log("Sent steamID: " + inputValue + " to funtions.");
+            console.log("här ska det inte skickat något mer efter.")
         }
 
     }
+    
+    else{
+        getSteamID(inputValue);
+        console.log("här ska vi skaffa steamID");
+        
+    }
+
+    //shows correct info in html.
+    showInfo(userFound(inputValue));
+}
+
+
+function userFound(steamID){
+
+   // console.log(getPersonaName(steamID).toString);
 }
 
 // Returns true if input-string is a 17 digit number.
-function isValidID(inputText) {
+function isValidIDFormat(inputText) {
     let validID = false;
 
     if (!isNaN(inputText) && getLength(inputText) === 17) {
@@ -86,10 +86,6 @@ function isValidID(inputText) {
     return validID;
 }
 
-function isSteamProfile(){
-
-}
-
 // Gets userdata from the server and calls the functions that gets more player data.
 function getSteamID(inputText) {
     axios.get("/getsteamid", {
@@ -99,15 +95,20 @@ function getSteamID(inputText) {
     })
         .then(function (response) {
             let steamID = response.data.response.steamid;
-
-            if (steamID === undefined) {
-                
+            steamID = {};
+            console.log(response.data);
+            
+            if(response.data.response.success === 42){
+                console.log("No user with that vanityID found");
+                return false;
             }
-            getPersonaName(steamID);
-            getAvatarFull(steamID);
-            getPlaytime(steamID);
-
-            console.log("Sent steamID: " + steamID + " to funtions.");
+            else if(response.data.response.success === 1){
+                console.log("Found user: " + steamID);
+                return steamID;
+            }
+            else{
+                console.log("Unexpected response from steam-API.")
+            }
         });
 }
 
@@ -120,16 +121,16 @@ function getPersonaName(steamID) {
     })
         .then(function (response) {
             let personaName = response.data.response.players[0].personaname;
-            
-            if(personaName != undefined){
+
+            if (personaName != undefined) {
                 setPlayerName(personaName);
                 console.log("Persona name set: " + personaName);
             }
-            else{
+            else {
                 console.log("Persona name not set.")
             }
-            
-            
+
+
             return personaName;
         });
 }

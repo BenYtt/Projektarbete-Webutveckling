@@ -5,7 +5,7 @@
 5. To get data from user, enter the vanity steam name or the SteamID (17 digits) you want to fetch.
 --- test
 Test-vanity-URL: "qubuxz"
-Test-id: 76561198037087034
+Test-id: 76561198089603744
 --- test
 Test-vanity-URL: "freeload_"
 Test-id: 76561198037087034
