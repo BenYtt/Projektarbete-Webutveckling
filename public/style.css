@@ -69,7 +69,6 @@ html, body {
         padding:.5rem;
         color:white;
         text-transform:uppercase;
-        cursor:pointer;
         justify-content: center;
         align-items: center;
         display: flex;
@@ -149,6 +148,20 @@ html, body {
         text-align: center;
         
     }
+
+    footer {
+        display: flex;
+        position: absolute;
+    }
+    footer .li{
+        display: inline;
+        float: right;
+        list-style: none;
+
+    }
+    footer .ul .li a{
+    }
+
 
 
 /* Charts */
@@ -305,7 +318,6 @@ html, body {
         padding:.5rem;
         color:white;
         text-transform:uppercase;
-        cursor:pointer;
         justify-content: center;
         align-items: center;
         display: flex;
