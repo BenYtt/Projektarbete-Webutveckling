@@ -47,14 +47,3 @@ app.get('/getownedgames', function(req, res) {
 app.listen(8080);
 
 
-
-// For future developement
-
-
-// // Requests the game info based of the gameID from the steam server.
-// app.get('/getschemaforgame', function(req, res) {
-//   axios.get("http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=" + APIKey + "&appid=" + req.query.gameID)
-//     .then(function(response) {
-//       res.send(response.data);
-//     });
-// });

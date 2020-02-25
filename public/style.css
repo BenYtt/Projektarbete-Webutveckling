@@ -238,6 +238,7 @@ html, body {
         font-family: "Lato", Arial, sans-serif;
         font-size: 10px;
         font-weight:bolder;
+        margin-top: 1rem;
         padding: 0.5em;;
         margin-right: 0.5rem;
         box-sizing: border-box;
@@ -287,7 +288,7 @@ html, body {
     .profile-name{
         margin: 0;
         text-align: center;
-        margin-top: 2   rem;
+        margin-top: 0.2rem;
 
 
     }
@@ -323,6 +324,12 @@ html, body {
     }
     ul#footer-links li {
         display: inline;
+        padding: 10px;
+
+    }
+
+    #github-image{
+        display: none;
     }
 
     #footer-links a{
