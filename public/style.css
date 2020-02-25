@@ -187,7 +187,7 @@ html, body {
 
 
 /* Media */
-@media all and (max-width: 500px), all and (max-height: 830){
+@media all and (max-width: 500px), all and (max-height: 830px){
 
     /* Logo and text */
     .logo-container{
