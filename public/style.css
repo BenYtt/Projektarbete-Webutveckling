@@ -22,6 +22,7 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center; 
+    overflow:scroll;
 }
 
 /* align items: y-led || justify-content: x-led*/
@@ -296,6 +297,38 @@ html, body {
         font-weight: bold;
         padding: 1em;
         text-align: center;
+        
+    }
+
+    
+    #footer {
+        height: 100px;
+    }
+    
+    .table {
+        position: absolute;
+        text-align: center;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        line-height: 30px;
+
+    }
+    
+    ul#footer-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 5vh;
+    }
+    ul#footer-links li {
+        display: inline;
+    }
+
+    #footer-links a{
+        text-decoration: none;
+        color: #FFF;
+        font-weight: 600;
         
     }
 }

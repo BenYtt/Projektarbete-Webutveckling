@@ -115,3 +115,69 @@
 		 opacity: 1;
 	}
 }
+
+
+
+
+
+// For future developement
+
+// // function getGameIDs(steamID) {
+//         axios.get("/getownedgames", {
+//             params: {
+//                 steamID
+//             }
+//         })
+//             .then(function (response) {
+//                 const gameCount = response.data.response.game_count;
+
+
+//             // for (let i = 0; i < gameCount; i++) {
+//             //     gameNames[i] = response.data.response.games[i].appid;
+//             //     console.log(gameNames[i]);
+//             // }
+
+//            // matchGameIDs();
+//         });
+// }
+
+// function matchGameIDs() {
+//     //matchar appid och gamename
+
+//     let gameID = gameNames[0];
+//     console.log(gameID);
+//         axios.get("/getownedgames", {
+//             params: {
+//                 gameID
+//             }
+//         })
+//             .then(function (response) {
+//                 console.log(response.data);
+//             });
+
+//     // for (let i = 0; i <  2; i++) {
+//     //     let gameID = gameNames[i];
+
+//     //     axios.get("/getschemaforgame", {
+//     //         params: {
+//     //             gameID
+//     //         }
+//     //     })
+//     //         .then(function (response) {
+//     //             console.log(response.data);
+//     //         });
+//     // }
+// }
+
+
+
+// For future developement
+
+
+// // Requests the game info based of the gameID from the steam server.
+// app.get('/getschemaforgame', function(req, res) {
+//   axios.get("http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=" + APIKey + "&appid=" + req.query.gameID)
+//     .then(function(response) {
+//       res.send(response.data);
+//     });
+// });
