@@ -39,6 +39,7 @@ function getLength(inputText) {
 function checkInputText(inputValue) {
     if (getLength(inputValue) >= 2 && (!isValidID(inputValue))) {
         getSteamID(inputValue);
+        //console.log(getSteamID(inputValue))
 
     }   
     else {
@@ -47,12 +48,6 @@ function checkInputText(inputValue) {
         getPlaytime(inputValue);
 
         console.log("Sent steamID: " + inputValue + " to funtions.");
-    }
-}
-
-function isValidInput() {
-    if (testString.length > 1 && testString.length < 20) {
-        return true;
     }
 }
 
@@ -72,6 +67,10 @@ function isValidID(inputText) {
     return validID;
 }
 
+function isSteamProfile(){
+
+}
+
 // Gets userdata from the server and calls the functions that gets more player data.
 function getSteamID(inputText) {
     axios.get("/getsteamid", {
@@ -81,6 +80,10 @@ function getSteamID(inputText) {
     })
         .then(function (response) {
             let steamID = response.data.response.steamid;
+
+            if (steamID === undefined) {
+                
+            }
             getPersonaName(steamID);
             getAvatarFull(steamID);
             getPlaytime(steamID);
@@ -99,6 +102,7 @@ function getPersonaName(steamID) {
         .then(function (response) {
             let personaName = response.data.response.players[0].personaname;
             setPlayerName(personaName);
+            return personaName;
 
             console.log("Persona name set: " + personaName);
         });
@@ -114,6 +118,7 @@ function getAvatarFull(steamID) {
         .then(function (response) {
             let url = response.data.response.players[0].avatarfull;
             setPlayerAvatar(url);
+            return personaName;
 
             console.log("Avatar set: " + url);
         });
@@ -130,14 +135,14 @@ function getPlaytime(steamID) {
     })
         .then(function (response) {
             const gameCount = response.data.response.game_count;
-            console.log(gameCount);
             for (let i = 0; i < gameCount; i++) {
                 totalMinutesPlayed += response.data.response.games[i].playtime_forever;
             }
 
             setPlaytime(totalMinutesPlayed);
-            console.log("Time played is calculated: " + totalMinutesPlayed);
+            return personaName;
 
+            console.log("Time played is calculated: " + totalMinutesPlayed);
         });
 }
 
