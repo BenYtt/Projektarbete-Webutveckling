@@ -2,12 +2,12 @@
 
 let inputText = $("#steamID")[0];
 
-let submitButton = document.getElementById("sendBtn").addEventListener('click', () => checkInputText(inputText.value));
-// let submitButton = $("#sendBtn")[0].click(checkInputText(inputText.value));
-// let submitButton = $("#sendBtn")[0];
-// let inputValue = inputText.value;
-// const checkedInputValue = checkInputText(inputValue);
-// submitButton.click(checkedInputValue);
+// let submitButton = document.getElementById("sendBtn").addEventListener('click', () => checkInputText(inputText.value));
+let submitButton = $("#sendBtn")[0].click(checkInputText(inputText.value));
+let submitButton = $("#sendBtn")[0];
+let inputValue = inputText.value;
+const checkedInputValue = checkInputText(inputValue);
+submitButton.click(checkedInputValue);
 
 var gameNames = {};
 
