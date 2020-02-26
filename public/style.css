@@ -5,7 +5,7 @@ html, body {
     padding: 0;
 }
 
-#show-info{
+#show-info, #error-text{
     display: none;
 }
 
@@ -46,7 +46,6 @@ html, body {
         height: 15vh;
         justify-items: center;
         padding: 3rem;
-        margin: 1.5rem;
     }
     
  
