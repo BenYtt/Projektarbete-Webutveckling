@@ -4,33 +4,32 @@ let inputText = $("#steamID")[0];
 let submitButton = $("#sendBtn").click(() => passFormData(inputText.value));
 var gameNames = {};
 
-function passFormData(inputValue) {
-  if (isValidIDFormat(inputValue)) {
-    passSteamID(inputValue);
-  } else {
-    getSteamID(inputValue);
-    showInfo(false);
-  }
-}
-
-// Shows player data when true, shows error-text when false.
-function showInfo(userFound) {
-  if (userFound) {
-    
-    $("#show-info").css("display", "block")
-    $("#error-text").css("display", "none")
-  } else {
-    $("#show-info").css("display", "none")
-    $("#error-text").css("display", "block")
-  }
-}
-
 //Sends form data when 'RETURN' is pressed.
 inputText.onkeydown = function(e) {
   if (e.keyCode === 13) {
     passFormData(inputText.value);
   }
 };
+
+function passFormData(inputValue) {
+  if (isValidIDFormat(inputValue)) {
+    passSteamID(inputValue);
+  } else {
+    getSteamID(inputValue);
+  }
+}
+
+// Shows player data when true, shows error-text when false.
+function showInfo(userFound) {
+  if (userFound) {
+    $("#show-info").css("display", "block");
+    $("#error-text").css("display", "none");
+  } else {
+    $("#show-info").css("display", "none");
+    $("#error-text").css("display", "block");
+    setErrorText();
+  }
+}
 
 // Gets the length of the input-string.
 function getLength(inputText) {
@@ -159,4 +158,8 @@ function setPlayTime(totalMinutesPlayed) {
         let totalHoursPlayed = Math.round(totalMinutesPlayed / 60);
         $(".hours-played")[0].innerHTML = "Your hours: " + totalHoursPlayed + "h";
     }  
+}
+
+function setErrorText() {
+  $("#error-text")[0].innerHTML = "No user found...";
 }

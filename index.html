@@ -1,60 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
-    <title>STEAM_HOURS</title>
-    <link rel="shortcut icon" type="image/jpg" href="https://steamstore-a.akamaihd.net/public/shared/images/responsive/share_steam_logo.png" >
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <title>STEAM_HOURS</title>
+  <link rel="shortcut icon" type="image/jpg"
+    href="https://steamstore-a.akamaihd.net/public/shared/images/responsive/share_steam_logo.png">
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 </head>
+
 <body>
-    <div class="container">
-      <div class="logo-container">
-        <i class="fab fa-steam fa-6x" id="logo"></i>
-        <h1>STEAM_HOURS</h1>
-      </div>
+  <div class="container">
+    <div class="logo-container">
+      <i class="fab fa-steam fa-6x" id="logo"></i>
+      <h1>STEAM_HOURS</h1>
+    </div>
 
-      <div class ="submission-form">
-        <input type="text" id="steamID" placeholder="ENTER_STEAMID">
-        <input type="submit" value="SEND" id="sendBtn">
-      </div>
+    <div class="submission-form">
+      <input type="text" id="steamID" placeholder="Search_steam">
+      <input type="submit" value="SEND" id="sendBtn">
+    </div>
 
 
-      <div id="show-info">
+    <div id="show-info">
 
-      
       <div id="profile-container">
         <div class="profile">
           <div class="id-picture">
-              <img src="" alt="Player Avatar" id="player-avatar">
-              <h2 class="profile-name" id="player-name"></h2>
-              <h2 id="error-text"></h2>
-              <h3 class ="hours-played" id="hours-played"></h3>
+            <img src="" alt="Player Avatar" id="player-avatar">
+            <h2 class="profile-name" id="player-name"></h2>
+            <h3 class="hours-played" id="hours-played"></h3>
           </div>
         </div>
-
-
-
-
-        </div>
       </div>
-      <div class="footer">
-        <div class="table">
-          <ul id="footer-links">
-            <li><a href="url">Anton Norgren</a></li>
-            <li><i class="fab fa-github fa-2x" id="github-image"></i></li>
-            <li><a href="url">Benjamin Ytterström</a></li>
-          </ul>
-        </div>
-      </div>
-  
-
-      </div>
-
     </div>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="./main.js"></script>
+    <h3 id="error-text"></h3>
+
+
+    <div class="footer">
+      <div class="table">
+        <ul id="footer-links">
+          <li><a href="url">Anton Norgren</a></li>
+          <li><i class="fab fa-github fa-2x" id="github-image"></i></li>
+          <li><a href="url">Benjamin Ytterström</a></li>
+        </ul>
+      </div>
+    </div>
+
+
+  </div>
+
+  </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./main.js"></script>
 </body>
+
 </html>

@@ -229,14 +229,14 @@ html, body {
     
     ::placeholder{
         font-family: "Lato", Arial, sans-serif;
-        font-size: 13px;
-        font-weight:bolder;
-        text-align: center;
+        font-size: 1em;
+        text-align: left;
+        text-transform: uppercase;
     }
 
     .submission-form input{
         font-family: "Lato", Arial, sans-serif;
-        font-size: 10px;
+        font-size: 1em;
         font-weight:bolder;
         margin-top: 1rem;
         padding: 0.5em;;
@@ -286,6 +286,13 @@ html, body {
     }
     
     .profile-name{
+        margin: 0;
+        text-align: center;
+        margin-top: 0.2rem;
+        font-size: 1.2em;
+    }
+
+    .error-text{
         margin: 0;
         text-align: center;
         margin-top: 0.2rem;
